@@ -33,13 +33,14 @@ export async function createInvoice(formData: FormData) {
 }
 
 // Use Zod to update the expected types
-const UpdateInvoice = FormSchema.omit({ id: true, date: true });
+const UpdateInvoice = FormSchema.omit({date: true });
 
-export async function updateInvoice(id: string, formData: FormData) {
-  const { customerId, amount, status } = UpdateInvoice.parse({
+export async function updateInvoice(formData: FormData) {
+  const { customerId, amount, status, id } = UpdateInvoice.parse({
     customerId: formData.get('customerId'),
     amount: formData.get('amount'),
     status: formData.get('status'),
+    id: formData.get('id'),
   });
  
   const amountInCents = amount * 100;
