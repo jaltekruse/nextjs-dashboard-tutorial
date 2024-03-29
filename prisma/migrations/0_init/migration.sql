@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE "customers" (
-    "id" UUID NOT NULL DEFAULT uuid_generate_v4(),
+    "id" UUID NOT NULL DEFAULT gen_random_uuid(),
     "name" VARCHAR(255) NOT NULL,
     "email" VARCHAR(255) NOT NULL,
     "image_url" VARCHAR(255) NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE "customers" (
 
 -- CreateTable
 CREATE TABLE "invoices" (
-    "id" UUID NOT NULL DEFAULT uuid_generate_v4(),
+    "id" UUID NOT NULL DEFAULT gen_random_uuid(),
     "customer_id" UUID NOT NULL,
     "amount" INTEGER NOT NULL,
     "status" VARCHAR(255) NOT NULL,
@@ -27,7 +27,7 @@ CREATE TABLE "revenue" (
 
 -- CreateTable
 CREATE TABLE "users" (
-    "id" UUID NOT NULL DEFAULT uuid_generate_v4(),
+    "id" UUID NOT NULL DEFAULT gen_random_uuid(),
     "name" VARCHAR(255) NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,

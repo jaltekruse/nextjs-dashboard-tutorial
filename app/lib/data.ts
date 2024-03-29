@@ -10,6 +10,7 @@ import {
 } from './definitions';
 import { formatCurrency } from './utils';
 import { unstable_noStore as noStore } from 'next/cache';
+import { PrismaClient } from '@prisma/client'
 
 export async function fetchRevenue() {
   // Add noStore() here to prevent the response from being cached.
@@ -36,6 +37,8 @@ export async function fetchRevenue() {
 
 export async function fetchLatestInvoices() {
   noStore();
+
+  const prisma = new PrismaClient()
   try {
     const data = await sql<LatestInvoiceRaw>`
       SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
