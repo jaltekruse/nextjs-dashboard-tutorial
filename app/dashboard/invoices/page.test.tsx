@@ -16,10 +16,16 @@ vi.mock('next/font/google', () => ({
   }),
 }))
  
-test('Page', () => {
+vi.mock('next/font/google', () => ({
+
+});
+
+test('Page', async () => {
   // render(<Page />)
   // expect(screen.getByRole('heading', { level: 1, name: 'Invoices Page' })).toBeDefined()
 
-  render(<Page2 />)
+  const result = await Page2();
+
+  render(result);
   expect(screen.getByRole('heading', { level: 1, name: 'Invoices Page' })).toBeDefined()
 })
